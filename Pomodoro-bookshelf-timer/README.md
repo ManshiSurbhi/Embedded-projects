@@ -1,4 +1,8 @@
 Pomodoro Timer for Expandable Bookshelf 
+![Images](images/Final-project.jpg)
+![Images](images/Pomdoro-timer-setup.jpg)
+![Working-Images](images/Pomodoro-timer-working.jpg)
+![Tinkercad-circuit](Tinkercad-circuit.jpg)
 
 Overview:
 
@@ -19,6 +23,8 @@ The timer by default has a 25-minute study window and a 5-minute rest window, th
 
 
 Design Iterations:
+![Iterations](images/Iteration-1.jpg)
+![Iterations](images/Iteration-2.jpg)
 
 Severals versions of the timer were developed during the prototyping process. Early designs explored different interfaces and hardware arrangements. Through testing and feedback from my group members, I removed the unnecessary complexity and simplified the design.
 
