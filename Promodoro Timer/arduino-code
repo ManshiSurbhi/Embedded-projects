@@ -1,0 +1,67 @@
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+const int buttonPin = 2;
+const int buzzerPin = 8;
+
+void setup() {
+  pinMode(buttonPin, INPUT);
+  pinMode(buzzerPin, OUTPUT);
+  
+  lcd.init();          
+  lcd.backlight();     
+  showIdleScreen(); //settin up the lcd screen
+}
+
+void loop() {
+
+  if (digitalRead(buttonPin) == HIGH) {
+    
+    tone(buzzerPin, 1500, 200);
+    delay(200);
+
+    runTimer(25, "Study Time:");
+    
+    // buzz to signal study time end
+    tone(buzzerPin, 1000, 1000);
+    lcd.clear();
+    lcd.print("Time Over!");
+    delay(2000);
+    
+    runTimer(5, "Rest Time:");
+    
+    // buzz to signal rest time end
+    tone(buzzerPin, 500, 1000);
+    showIdleScreen();
+  }
+}
+
+void showIdleScreen() {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Press button to");
+  lcd.setCursor(0, 1);
+  lcd.print("start...");
+}
+
+void runTimer(int minutes, String label) {
+  for (int m = minutes - 1; m >= 0; m--) {
+    for (int s = 59; s >= 0; s--) {
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      lcd.print(label);
+      lcd.setCursor(0, 1);
+      
+      // formatting time with leading zeros
+      if (m < 10) lcd.print("0");
+      lcd.print(m);
+      lcd.print(":");
+      if (s < 10) lcd.print("0");
+      lcd.print(s);
+      
+      delay(1000);
+    }
+  }
+}
